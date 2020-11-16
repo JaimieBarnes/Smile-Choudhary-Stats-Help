@@ -1,6 +1,8 @@
 install.packages("lme4")
 library(lme4)
 
+### Hehehehe yeah boiiiiii ### test ###
+
 Data3<-read.csv("Exp3Excluded.csv", header=TRUE)
 Data3
 Data3$EscapeResponse<-as.factor(Data3$EscapeResponse)
@@ -21,10 +23,10 @@ anova(MaxModel, Model1, test="Chisq") ### 3-way interaction not significant so r
 Model2<-glmer(EscapeResponse~Predator*Board + Board*ColourDiffPercent + Predator+ColourDiffPercent + (1|Individual), data=Data3, family=binomial)
 anova(Model1, Model2, test="Chisq") ### predator colourdiff interaction is not significant so remove
 
-### In the model step above there is an issue, removing predator*board here is not 
+### In the model step above there is an issue, removing predator*board here is not
 ### significant but it nearly is. So I tested the other interactions first to see which
 ### ones had the highest p values or least significance. I found this to be predator*colourdiff
-### so I removed that one first, now you will notice in the next step, predator*board 
+### so I removed that one first, now you will notice in the next step, predator*board
 ### is significant so should be kept in the model. This is an issue in science with no
 ### real answer currently.
 
@@ -55,7 +57,7 @@ anova(Model5, Model6, test="Chisq") ### Final step - removing colourdiffpercent 
 Model1<-glmer(EscapeResponse~Treatment*ColourDiffPercent + Temp.*ColourDiffPercent + Temp.*Size + Temp.*Treatment + Size*Treatment + Size*ColourDiffPercent + (1|Individual), data=Data3, family=binomial)
 
 Model2<-glmer(EscapeResponse~Treatment*ColourDiffPercent + Temp.*ColourDiffPercent + Temp.*Treatment + Size*Treatment + Size*ColourDiffPercent + (1|Individual), data=Data3, family=binomial)
-anova(Model1, Model2, test="Chisq") ### Temp and size interaction removed 
+anova(Model1, Model2, test="Chisq") ### Temp and size interaction removed
 
 Model3<-glmer(EscapeResponse~Treatment*ColourDiffPercent + Temp.*Treatment + Size*Treatment + Size*ColourDiffPercent + (1|Individual), data=Data3, family=binomial)
 anova(Model2, Model3, test="Chisq") ### Temp and colourdiff intercation removed
@@ -90,10 +92,10 @@ anova(MaxModel, Model1, test="Chisq") ### 3-way interaction not significant so r
 Model2<-glmer(EscapeResponse~Predator*Board + Board*ColourDiffPercent + Predator+ColourDiffPercent + (1|Individual), data=Data3, family=binomial)
 anova(Model1, Model2, test="Chisq") ### predator colourdiff interaction is not significant so remove
 
-### In the model step above there is an issue, removing predator*board here is not 
+### In the model step above there is an issue, removing predator*board here is not
 ### significant but it nearly is. So I tested the other interactions first to see which
 ### ones had the highest p values or least significance. I found this to be predator*colourdiff
-### so I removed that one first, now you will notice in the next step, predator*board 
+### so I removed that one first, now you will notice in the next step, predator*board
 ### is significant so should be kept in the model. This is an issue in science with no
 ### real answer currently.
 
